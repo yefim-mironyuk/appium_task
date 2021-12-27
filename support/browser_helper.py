@@ -33,7 +33,6 @@ class ElementInteractions:
             logger.error(f'Cannot click an element "{how}", "{what}"...')
             raise
         logger.debug(f'Element "{how}", "{what}" clicked...')
-        return element
 
     def send_keys_in_field(self, how, what, message):
         element = self.click_an_element(how, what)
