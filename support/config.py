@@ -1,7 +1,7 @@
 # CHANGE PATH VARIABLE ACCORDING TO APK FILE LOCATION
 # EX: "C:\\Users\\Yaukhim.Miraniuk\\Desktop\\app1.apk"
 class CapsConstants:
-    path = "C:\\Users\\Yaukhim.Miraniuk\\Desktop\\app1.apk"
+    path = ""
     device_name = "Android Emulator"
     platform_name = "Android"
     browser_name = "chrome"

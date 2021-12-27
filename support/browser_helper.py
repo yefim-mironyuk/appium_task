@@ -18,7 +18,7 @@ class ElementInteractions:
         logger.debug(f'Element "{strategy}", "{selector}" was found...')
         return element
 
-    def click_an_element(self, strategy, selector):
+    def click_element(self, strategy, selector):
         logger.debug(f'Trying to find clickable element "{strategy}", "{selector}"...')
         try:
             element = WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable((strategy, selector)))
@@ -50,9 +50,9 @@ class ElementInteractions:
         element = self.find_visible_element(strategy, selector)
         element.clear()
         logger.debug(f'Field, located "{strategy}", "{selector}" cleared...')
-        logger.debug(f'Hiding keyboard...')
 
     def hide_keyboard(self):
+        logger.debug(f'Hiding keyboard...')
         self.browser.hide_keyboard()
 
     def is_element_present(self, strategy, selector):

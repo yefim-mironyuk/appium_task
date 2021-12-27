@@ -9,7 +9,7 @@ class TaskPage(BasePage):
         EI.hide_keyboard(EI(self.browser))
 
     def click_save_changes_button(self):
-        EI.click_an_element(EI(self.browser), *TaskPageLocators.SAVE_CHANGES_BUTTON)
+        EI.click_element(EI(self.browser), *TaskPageLocators.SAVE_CHANGES_BUTTON)
 
     def clear_title(self):
         EI.clear_field(EI(self.browser), *TaskPageLocators.TITLE_FIELD)

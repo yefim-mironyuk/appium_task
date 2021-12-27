@@ -11,5 +11,5 @@ class LoginPage(BasePage):
         EI.send_keys_in_field(EI(self.browser), *LoginPageLocators.PASSWORD_FIELD, text)
 
     def click_sign_in_button(self):
-        EI.click_an_element(EI(self.browser), *LoginPageLocators.SIGN_IN_BUTTON)
+        EI.click_element(EI(self.browser), *LoginPageLocators.SIGN_IN_BUTTON)
 

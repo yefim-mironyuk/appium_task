@@ -14,7 +14,7 @@ class RepositoryPage(BasePage):
         are_objects_equal(repository_name_on_page, name)
 
     def go_to_settings_page(self):
-        EI.click_an_element(EI(self.browser), *RepositoryPageLocators.SETTINGS_BUTTON)
+        EI.click_element(EI(self.browser), *RepositoryPageLocators.SETTINGS_BUTTON)
 
     def is_repository_renamed(self, new_name):
         rename_repository_name_on_page = EI.find_visible_element(EI(self.browser),

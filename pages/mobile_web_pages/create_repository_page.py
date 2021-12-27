@@ -6,4 +6,4 @@ from .locators import CreateRepositoryPageLocators
 class CreateRepositoryPage(BasePage):
     def create_repository(self, text):
         EI.send_keys_in_field(EI(self.browser), *CreateRepositoryPageLocators.REPOSITORY_NAME_FIELD, text)
-        EI.click_an_element(EI(self.browser), *CreateRepositoryPageLocators.CREATE_REPOSITORY_BUTTON)
+        EI.click_element(EI(self.browser), *CreateRepositoryPageLocators.CREATE_REPOSITORY_BUTTON)

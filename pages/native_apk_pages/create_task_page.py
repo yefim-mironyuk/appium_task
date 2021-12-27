@@ -13,4 +13,4 @@ class CreateTaskPage(BasePage):
         EI.hide_keyboard(EI(self.browser))
 
     def click_save_task_button(self):
-        EI.click_an_element(EI(self.browser), *CreateTaskPageLocators.SAVE_NEW_TASK_BUTTON)
+        EI.click_element(EI(self.browser), *CreateTaskPageLocators.SAVE_NEW_TASK_BUTTON)

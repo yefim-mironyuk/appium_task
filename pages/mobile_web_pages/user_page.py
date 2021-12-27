@@ -5,8 +5,8 @@ from support.browser_helper import ElementInteractions as EI
 
 class UserPage(BasePage):
     def open_repositories(self):
-        EI.click_an_element(EI(self.browser), *UserPageLocators.REPOSITORIES_BUTTON)
+        EI.click_element(EI(self.browser), *UserPageLocators.REPOSITORIES_BUTTON)
 
     def go_to_create_repository_page(self):
-        EI.click_an_element(EI(self.browser), *UserPageLocators.NEW_REPOSITORY_BUTTON)
+        EI.click_element(EI(self.browser), *UserPageLocators.NEW_REPOSITORY_BUTTON)
 
