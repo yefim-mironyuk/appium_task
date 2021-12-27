@@ -1,7 +1,7 @@
 from faker import Faker
 
 
-def get_fake_title():
+def get_fake_name():
     fake_name = Faker().first_name()
     return fake_name
 

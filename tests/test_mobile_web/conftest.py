@@ -10,7 +10,7 @@ from pages.mobile_web_pages.repository_page import RepositoryPage
 from pages.mobile_web_pages.repository_settings_page import RepositorySettingsPage
 from pages.mobile_web_pages.user_page import UserPage
 from support.desired_capabilities import DesiredCapabilities
-from support.links import start_link as link
+from support.links import start_link as link, hub_link
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -37,7 +37,7 @@ def pytest_runtest_makereport(item, call):
 
 @pytest.fixture(scope="module")
 def browser():
-    browser = webdriver.Remote("http://localhost:4723/wd/hub", DesiredCapabilities.webCapabilities)
+    browser = webdriver.Remote(hub_link, DesiredCapabilities.webCapabilities)
     yield browser
     print("\nquit browser..")
     browser.quit()
@@ -45,7 +45,7 @@ def browser():
 
 @pytest.fixture(scope='module')
 def chrome_start_page(browser):
-    chrome_start_page = ChromeStartPage(browser)
+    chrome_start_page = ChromeStartPage(browser, link)
     yield chrome_start_page
 
 
@@ -83,3 +83,4 @@ def repository_page(browser):
 def repository_settings_page(browser):
     repository_settings_page = RepositorySettingsPage(browser, link)
     yield repository_settings_page
+

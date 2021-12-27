@@ -6,6 +6,7 @@ from pages.native_apk_pages.create_task_page import CreateTaskPage
 from pages.native_apk_pages.main_page import MainPage
 from pages.native_apk_pages.task_page import TaskPage
 from support.desired_capabilities import DesiredCapabilities
+from support.links import hub_link
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -32,7 +33,7 @@ def pytest_runtest_makereport(item, call):
 
 @pytest.fixture(scope="module")
 def browser():
-    browser = webdriver.Remote("http://localhost:4723/wd/hub", DesiredCapabilities.tasksAppCapabilities)
+    browser = webdriver.Remote(hub_link, DesiredCapabilities.mobileCapabilities)
     yield browser
     print("\nquit browser..")
     browser.quit()

@@ -1,16 +1,15 @@
-# CHANGE PATH VARIABLE ACCORDING TO APK FILE LOCATION
-path = ""
+from .config import CapsConstants
 
 
 class DesiredCapabilities:
-    tasksAppCapabilities = {
-        "appium:deviceName": "Android Emulator",
-        "platformName": "Android",
-        "appium:app": path,
+    mobileCapabilities = {
+        "appium:deviceName": CapsConstants.device_name,
+        "platformName": CapsConstants.platform_name,
+        "appium:app": CapsConstants.path,
     }
 
     webCapabilities = {
-        "appium:deviceName": "Android Emulator",
-        "platformName": "Android",
-        "browserName": "chrome"
+        "appium:deviceName": CapsConstants.device_name,
+        "platformName": CapsConstants.platform_name,
+        "browserName": CapsConstants.browser_name,
     }

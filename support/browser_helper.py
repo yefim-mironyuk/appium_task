@@ -1,5 +1,5 @@
 from loguru import logger
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -8,60 +8,58 @@ class ElementInteractions:
     def __init__(self, browser):
         self.browser = browser
 
-    def find_visible_element(self, how, what):
-        logger.debug(f'Trying to find visible element "{how}", "{what}"...')
+    def find_visible_element(self, strategy, selector):
+        logger.debug(f'Trying to find visible element "{strategy}", "{selector}"...')
         try:
-            element = WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((how, what)))
+            element = WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((strategy, selector)))
         except Exception:
-            logger.error(f'Cannot find visible element "{how}", "{what}"!')
+            logger.error(f'Cannot find visible element "{strategy}", "{selector}"!')
             raise
-        logger.debug(f'Element "{how}", "{what}" was found...')
+        logger.debug(f'Element "{strategy}", "{selector}" was found...')
         return element
 
-    def click_an_element(self, how, what):
-        logger.debug(f'Trying to find clickable element "{how}", "{what}"...')
+    def click_an_element(self, strategy, selector):
+        logger.debug(f'Trying to find clickable element "{strategy}", "{selector}"...')
         try:
-            element = WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable((how, what)))
+            element = WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable((strategy, selector)))
         except Exception:
-            logger.error(f'Cannot find element "{how}", "{what}"...')
+            logger.error(f'Cannot find element "{strategy}", "{selector}"...')
             raise
-        logger.debug(f'Clickable element "{how}", "{what}" was found...')
-        logger.debug(f'Trying to click an element "{how}", "{what}"...')
+        logger.debug(f'Clickable element "{strategy}", "{selector}" was found...')
+        logger.debug(f'Trying to click an element "{strategy}", "{selector}"...')
         try:
             element.click()
         except Exception:
-            logger.error(f'Cannot click an element "{how}", "{what}"...')
+            logger.error(f'Cannot click an element "{strategy}", "{selector}"...')
             raise
-        logger.debug(f'Element "{how}", "{what}" clicked...')
+        logger.debug(f'Element "{strategy}", "{selector}" clicked...')
 
-    def send_keys_in_field(self, how, what, message):
-        element = self.click_an_element(how, what)
+    def send_keys_in_field(self, strategy, selector, text):
+        element = self.find_visible_element(strategy, selector)
         element.clear()
-        logger.debug(f'Trying to send "{message}" in element "{how}", "{what}"...')
+        logger.debug(f'Trying to send "{text}" in element "{strategy}", "{selector}"...')
         try:
-            element.send_keys(message)
+            element.send_keys(text)
         except Exception:
-            logger.error(f'Cannot send {message} in element "{how}", "{what}"...')
+            logger.error(f'Cannot send {text} in element "{strategy}", "{selector}"...')
             raise
-        logger.debug(f'{message} is sent in element "{how}", "{what}"...')
+        logger.debug(f'{text} is sent in element "{strategy}", "{selector}"...')
         logger.debug(f'Hiding keyboard...')
 
-    def clear_field(self, how, what):
-        element = self.click_an_element(how, what)
+    def clear_field(self, strategy, selector):
+        element = self.find_visible_element(strategy, selector)
         element.clear()
-        logger.debug(f'Field, located "{how}", "{what}" cleared...')
+        logger.debug(f'Field, located "{strategy}", "{selector}" cleared...')
         logger.debug(f'Hiding keyboard...')
 
     def hide_keyboard(self):
         self.browser.hide_keyboard()
 
-    def is_element_present(self, how, what):
-        logger.info(f'Trying to find element "{how}", "{what}"...')
+    def is_element_present(self, strategy, selector):
+        logger.debug(f'Trying to find element "{strategy}", "{selector}"...')
         try:
-            WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((how, what)))
+            WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((strategy, selector)))
         except NoSuchElementException:
-            logger.error(f'Cannot find element "{how}", "{what}"!')
-        logger.debug(f'Element "{how}", "{what}" was found...')
+            logger.error(f'Cannot find element "{strategy}", "{selector}"!')
+        logger.debug(f'Element "{strategy}", "{selector}" was found...')
         return True
-
-

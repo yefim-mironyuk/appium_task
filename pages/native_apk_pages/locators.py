@@ -16,4 +16,3 @@ class TaskPageLocators:
     TITLE_FIELD = (AppiumBy.ID, "com.Tasks.Tasks:id/taskTitleEditText")
     SAVE_CHANGES_BUTTON = (AppiumBy.ID, "com.Tasks.Tasks:id/saveTaskButton")
     ERROR_MESSAGE = (AppiumBy.ID, "com.Tasks.Tasks:id/snackbar_text")
-

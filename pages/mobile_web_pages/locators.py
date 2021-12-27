@@ -46,6 +46,3 @@ class RepositorySettingsPageLocators:
     I_UNDERSTAND_BUTTON = (By.CSS_SELECTOR, "div.Box-body.overflow-auto > form > button")
     RENAME_REPOSITORY_FIELD = (By.CSS_SELECTOR, "#rename-field")
     RENAME_BUTTON = (By.CSS_SELECTOR, "form.d-flex > button")
-
-
-

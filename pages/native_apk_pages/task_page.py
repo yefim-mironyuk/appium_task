@@ -4,8 +4,8 @@ from support.browser_helper import ElementInteractions as EI
 
 
 class TaskPage(BasePage):
-    def rename_title(self, message):
-        EI.send_keys_in_field(EI(self.browser), *TaskPageLocators.TITLE_FIELD, message)
+    def rename_title(self, text):
+        EI.send_keys_in_field(EI(self.browser), *TaskPageLocators.TITLE_FIELD, text)
         EI.hide_keyboard(EI(self.browser))
 
     def click_save_changes_button(self):

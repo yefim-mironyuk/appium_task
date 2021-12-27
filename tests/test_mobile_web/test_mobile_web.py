@@ -5,9 +5,9 @@ from support.generated_data import generated_title, new_title
 
 @pytest.fixture(scope="module")
 def setup(chrome_start_page, login_page):
-    chrome_start_page.switch_to_native()
+    chrome_start_page.switch_to_context(context_name="native")
     chrome_start_page.skip_welcome_page()
-    login_page.switch_to_web()
+    login_page.switch_to_context(context_name="web")
     login_page.open()
     login_page.fill_username_field(username)
     login_page.fill_password_field(password)
