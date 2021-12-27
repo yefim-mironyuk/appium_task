@@ -24,9 +24,11 @@ You need:
 
 1) Appium server and Android Studio be installed on your system. 
 
-2) Create device emulator in Android Studio. This framework using `Pixel 2` emulator on `Android 7.1.1` 
+2) Create device emulator in Android Studio. This framework using `Pixel 2` emulator on `Android 7.1.1`
 
-Also, you can configure ``desired_capabilities.py`` file according to your emulator. 
+You can configure ``desired_capabilities.py`` file according to your emulator, also you need to change ``path`` variable according to apk file location.
+
+EX: ``C:\\Users\\Yaukhim.Miraniuk\\Desktop\\app1.apk``
 
 
 # How to run it
